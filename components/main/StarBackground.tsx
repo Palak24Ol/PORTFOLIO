@@ -2,51 +2,59 @@
 
 import React, { useState, useRef, Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Points, PointMaterial, Preload } from "@react-three/drei";
-// @ts-ignore
+import { Points, PointMaterial } from "@react-three/drei";
+import * as THREE from "three"; // Import Three.js for typing
+// @ts-expect-error - maath/random has no official types
 import * as random from "maath/random/dist/maath-random.esm";
 
-const StarBackground = (props: any) => {
-  const ref: any = useRef();
+// Define props type
+type StarBackgroundProps = {
+  [key: string]: unknown; // Allows any additional props to be passed
+};
+
+const StarBackground = (props: StarBackgroundProps) => {
+  // Type ref as THREE.Points from Three.js
+  const ref = useRef<THREE.Points>(null);
   const [sphere] = useState(() =>
     random.inSphere(new Float32Array(6000), { radius: 1.2 })
   );
 
   useFrame((state, delta) => {
-    ref.current.rotation.x -= delta/10;
-    ref.current.rotation.y -= delta/15;
-  })
-
+    if (ref.current) {
+      ref.current.rotation.x -= delta / 10;
+      ref.current.rotation.y -= delta / 15;
+    }
+  });
 
   return (
-    <group rotation={[0,0, Math.PI / 4]}>
-        <Points
+    <group rotation={[0, 0, Math.PI / 4]}>
+      <Points
         ref={ref}
         positions={sphere}
         stride={3}
         frustumCulled
         {...props}
-        >
-            <PointMaterial
-                transparent
-                color="$fff"
-                size={0.002}
-                sizeAttenuation={true}
-                dethWrite={false}
-            />
-        </Points>
+      >
+        <PointMaterial
+          transparent
+          color="#fff"
+          size={0.002}
+          sizeAttenuation={true}
+          depthWrite={false}
+        />
+      </Points>
     </group>
-  )
+  );
 };
 
 const StarsCanvas = () => (
-    <div className="w-full h-auto fixed inset-0 z-[20]">
-        <Canvas camera={{position: [0, 0, 1]}}>
-        <Suspense fallback={null}>
-            <StarBackground />
-        </Suspense>
-        </Canvas>
-    </div>
-)
+  <div className="w-full h-auto fixed inset-0 z-[20]">
+    <Canvas camera={{ position: [0, 0, 1] }}>
+      <Suspense fallback={null}>
+        <StarBackground />
+      </Suspense>
+    </Canvas>
+  </div>
+);
 
 export default StarsCanvas;
