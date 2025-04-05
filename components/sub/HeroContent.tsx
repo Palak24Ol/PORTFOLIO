@@ -34,7 +34,7 @@ const HeroContent = () => {
         variants={slideInFromLeft(0.8)}
         className="text-lg text-gray-400 my-5 max-w-[600px]"
         >
-          I'm a full stack developer engineererfgnksfdk;bdnmdlvmadvmdfvdzfvdfdthg
+          I am a full stack developer engineererfgnksfdk;bdnmdlvmadvmdfvdzfvdfdthg
 
         </motion.p>
         <motion.a
