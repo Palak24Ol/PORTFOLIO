@@ -31,6 +31,12 @@ const NavBar = () => {
                         <a href="#recentprojects" className='cursor-pointer' > Projects
 
                         </a>
+
+                        <a href="#exp" className='cursor-pointer' > Experience
+
+                        </a>
+
+
                         <a href="#contact" className='cursor-pointer' > Contact
 
                         </a>

@@ -1,4 +1,5 @@
 import Encryption from "@/components/main/Encryption";
+import Experience from "@/components/main/Experience";
 import Footer from "@/components/main/Footer";
 import Hero from "@/components/main/Hero";
  
@@ -16,6 +17,7 @@ export default function Home() {
         <Encryption />
         
         <RecentProjects/>
+        <Experience />
         <Footer />
 
 
