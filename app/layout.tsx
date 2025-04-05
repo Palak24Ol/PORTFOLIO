@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import StarsCanvas from "@/components/main/StarBackground";
+import NavBar from "@/components/main/NavBar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,6 +27,7 @@ export default function RootLayout({
         className={`${geistSans.variable} bg-[#030014] overflow-y-scroll overflow-x-hidden`}
       >
         <StarsCanvas/>
+        <NavBar/>
         {children}
       </body>
     </html>
