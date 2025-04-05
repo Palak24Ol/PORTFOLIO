@@ -1,7 +1,8 @@
 import Encryption from "@/components/main/Encryption";
 import Footer from "@/components/main/Footer";
 import Hero from "@/components/main/Hero";
-import Projects from "@/components/main/Projects";
+ 
+import RecentProjects from "@/components/main/RecentProjects";
 import Skills from "@/components/main/Skills";
 
  
@@ -13,8 +14,10 @@ export default function Home() {
         <Hero/>
         <Skills/>
         <Encryption />
-        <Projects/>
+        
+        <RecentProjects/>
         <Footer />
+
 
       </div>
       

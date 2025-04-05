@@ -60,3 +60,7 @@
 html {
   scroll-behavior: smooth;
 }
+.clear-nav {
+  margin-top: 65px !important; 
+  padding-top: 96px;  
+}
